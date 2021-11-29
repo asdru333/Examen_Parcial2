@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Examen_Parcial2.Models
 {
-    public class BebidaModel
+    public class BebidaModel: ComestibleModel
     {
         [Display(Name = "Categoria")]
         [Required(ErrorMessage = "Es necesario que ingrese la categoria de la bebida")]

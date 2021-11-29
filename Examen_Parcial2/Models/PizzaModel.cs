@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Examen_Parcial2.Models
 {
-    public class PizzaModel
+    public class PizzaModel: ComestibleModel
     {
         [Display(Name = "Salsa")]
         [Required(ErrorMessage = "Es necesario que ingrese el tipo de salsa de la pizza")]
