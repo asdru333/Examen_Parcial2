@@ -103,7 +103,7 @@ namespace Examen_Parcial2.Handlers
             return (insertarEnBaseDatos(consultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(consultaBebida, valoresParametrosBebida));
         }
 
-        public List<AcompananteModel> obtenerAcompanante()
+        public List<AcompananteModel> obtenerAcompanantes()
         {
             string consulta = "SELECT * FROM Comestible C JOIN Acompanante A ON C.nombrePK = A.nombreFK;";
             List<AcompananteModel> acompanantes = new List<AcompananteModel>();
@@ -121,7 +121,7 @@ namespace Examen_Parcial2.Handlers
             return acompanantes;
         }
 
-        public bool insertarAcompanante(AcompananteModel acompanante)
+        public bool agregarAcompanante(AcompananteModel acompanante)
         {
             string consultaComestible = "INSERT INTO Comestible ( nombrePK, precio, fotoArchivo, fotoTipo ) "
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
