@@ -19,8 +19,8 @@ namespace Examen_Parcial2.Models
 
         [Display(Name = "Foto del funcionario")]
         [Required(ErrorMessage = "Es necesario que ingrese la foto del comestible")]
-        public HttpPostedFileBase FotoArchivo { get; set; }
+        public HttpPostedFileBase fotoArchivo { get; set; }
 
-        public string TipoArchivoFoto { get; set; }
+        public string fotoTipo { get; set; }
     }
 }
