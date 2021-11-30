@@ -10,13 +10,48 @@ namespace Examen_Parcial2.Controllers
 {
     public class ComestibleController : Controller
     {
-        public ActionResult listadoDeNoticias()
+        public ActionResult listaComestibles()
         {
             ComestibleHandler accesoDatos = new ComestibleHandler();
             ViewBag.pizza = accesoDatos.obtenerPizzas();
             ViewBag.bebida = accesoDatos.obtenerBebidas();
             ViewBag.acompanante = accesoDatos.obtenerAcompanantes();
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult AgregarPizza()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AgregarPizza(PizzaModel pizza, string ingredientes)
+        {
+            ViewBag.ExitoAlCrear = false;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ComestibleHandler accesoDatos = new ComestibleHandler();
+                    ViewBag.ExitoAlCrear = accesoDatos.agregarPizza(pizza);
+                    if (ViewBag.ExitoAlCrear)
+                    {
+                        foreach (var variable in pizza.ingredientes)
+                        {
+                            accesoDatos.agregarIngredientes(pizza.nombre, variable);
+                        }
+                        ViewBag.Message = "La pizza " + pizza.nombre + " fue creada con éxito.";
+                        ModelState.Clear();
+                    }
+                }
+                return View();
+            }
+            catch
+            {
+                ViewBag.Message = "Algo salió mal y no fue posible crear la pizza";
+                return View();
+            }
         }
 
         [HttpGet]

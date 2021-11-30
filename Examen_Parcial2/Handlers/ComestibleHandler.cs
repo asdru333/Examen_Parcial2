@@ -11,6 +11,7 @@ namespace Examen_Parcial2.Handlers
     public class ComestibleHandler: BaseDatosHandler
     {
         ArchivosHandler manejadorDeImagen = new ArchivosHandler();
+
         public List<PizzaModel> obtenerPizzas()
         {
             string consulta = "SELECT * FROM Comestible C JOIN Pizza P ON C.nombrePK = P.nombreFK;";
@@ -35,7 +36,7 @@ namespace Examen_Parcial2.Handlers
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
 
             string ConsultaPizza = "INSERT INTO Pizza (nombreFK, salsa ) "
-                + "VALUES (@nombrePizza @salsa );";
+                + "VALUES (@nombrePizza, @salsa );";
 
             Dictionary<string, object> valoresParametrosComestible = new Dictionary<string, object> {
                 {"@nombre", pizza.nombre },
@@ -54,7 +55,7 @@ namespace Examen_Parcial2.Handlers
 
         public bool agregarIngredientes(string pizza, string ingrediente)
         {
-            string consulta = "INSERT INTO PizzaIngrediente VALUES (@pizza, @ingrediente)";
+            string consulta = "INSERT INTO IngredientesPizza VALUES (@pizza, @ingrediente)";
 
             Dictionary<string, object> valoresParametros = new Dictionary<string, object> {
                 {"@pizza", pizza },
