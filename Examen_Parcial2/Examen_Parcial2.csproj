@@ -125,6 +125,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ComboHandler.cs" />
     <Compile Include="Handlers\ComestibleHandler.cs" />
     <Compile Include="Handlers\FilesHandler.cs" />
     <Compile Include="Handlers\BaseDatosHandler.cs" />
