@@ -24,10 +24,23 @@ namespace Examen_Parcial2.Handlers
                     {
                         nombre = Convert.ToString(columna["nombrePK"]),
                         precio = Convert.ToDouble(columna["precio"]),
-                        salsa = Convert.ToString(columna["salsa"])
-                    });
+                        salsa = Convert.ToString(columna["salsa"]),
+                        ingredientes = obtenerIngredientes(Convert.ToString(columna["nombrePK"]))
+                    } );
             }
             return pizzas;
+        }
+
+        public List<string> obtenerIngredientes(string pizza)
+        {
+            string consulta = "SELECT * FROM IngredientesPizza WHERE nombrePizzaFK = '" + pizza + "';";
+            List<string> ingredientes = new List<string>();
+            DataTable tabla = leerBaseDeDatos(consulta);
+            foreach (DataRow columna in tabla.Rows)
+            {
+                ingredientes.Add(Convert.ToString(columna["ingrediente"]));
+            }
+            return ingredientes;
         }
 
         public bool agregarPizza(PizzaModel pizza)
@@ -146,7 +159,7 @@ namespace Examen_Parcial2.Handlers
             return (insertarEnBaseDatos(consultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(consultaAcompanante, valoresParametrosAcompanante));
         }
 
-        public Tuple<byte[], string> ObtenerFoto(string nombre)
+        public Tuple<byte[], string> obtenerFoto(string nombre)
         {
             string columnaContenido = "fotoArchivo";
             string columnaTipo = "fotoTipo";

@@ -173,6 +173,7 @@
     <Content Include="Views\Comestible\AgregarBebida.cshtml" />
     <Content Include="Views\Comestible\AgregarAcompanante.cshtml" />
     <Content Include="Views\Comestible\AgregarPizza.cshtml" />
+    <Content Include="Views\Comestible\listaComestibles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

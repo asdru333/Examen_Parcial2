@@ -13,10 +13,20 @@ namespace Examen_Parcial2.Controllers
         public ActionResult listaComestibles()
         {
             ComestibleHandler accesoDatos = new ComestibleHandler();
+            string ingrediente = "";
             ViewBag.pizza = accesoDatos.obtenerPizzas();
             ViewBag.bebida = accesoDatos.obtenerBebidas();
             ViewBag.acompanante = accesoDatos.obtenerAcompanantes();
+            ViewBag.ingrediente = ingrediente;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ObtenerImagen(string nombre)
+        {
+            ComestibleHandler comestibleHandler = new ComestibleHandler();
+            var tupla = comestibleHandler.obtenerFoto(nombre);
+            return File(tupla.Item1, tupla.Item2);
         }
 
         [HttpGet]
