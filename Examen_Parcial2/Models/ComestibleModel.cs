@@ -15,6 +15,7 @@ namespace Examen_Parcial2.Models
 
         [Display(Name = "Precio")]
         [Required(ErrorMessage = "Es necesario que ingrese el precio del comestible")]
+        [RegularExpression("^[0-9]+(.[0-9]+){0,1}$", ErrorMessage = "Debe ingresar números")]
         public double precio { get; set; }
 
         [Display(Name = "Foto del funcionario")]

@@ -15,6 +15,7 @@ namespace Examen_Parcial2.Models
 
         [Display(Name = "Litros")]
         [Required(ErrorMessage = "Es necesario que ingrese los litros que contiene la bebida")]
+        [RegularExpression("^[0-9]+(.[0-9]+){0,1}$", ErrorMessage = "Debe ingresar números")]
         public double litros { get; set; }
     }
 }

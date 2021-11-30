@@ -34,18 +34,19 @@ namespace Examen_Parcial2.Handlers
             string ConsultaComestible = "INSERT INTO Comestible ( nombrePK, precio, fotoArchivo, fotoTipo ) "
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
 
-            string ConsultaPizza = "INSERT INTO Pizza ( salsa ) "
-                + "VALUES ( @salsa );";
+            string ConsultaPizza = "INSERT INTO Pizza (nombreFK, salsa ) "
+                + "VALUES (@nombrePizza @salsa );";
 
             Dictionary<string, object> valoresParametrosComestible = new Dictionary<string, object> {
                 {"@nombre", pizza.nombre },
                 {"@precio", pizza.precio },
-                {"@fotoTipo", pizza.fotoTipo },
+                {"@fotoTipo", pizza.fotoArchivo.ContentType }
             };
             valoresParametrosComestible.Add("@fotoArchivo", manejadorDeImagen.ConvertirArchivoABytes(pizza.fotoArchivo));
 
             Dictionary<string, object> valoresParametrosPizza = new Dictionary<string, object> {
-                {"@salsa", pizza.salsa },
+                {"@nombrePizza", pizza.nombre },
+                {"@salsa", pizza.salsa }
             };
 
             return (insertarEnBaseDatos(ConsultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(ConsultaPizza, valoresParametrosPizza));
@@ -86,17 +87,18 @@ namespace Examen_Parcial2.Handlers
             string consultaComestible = "INSERT INTO Comestible ( nombrePK, precio, fotoArchivo, fotoTipo ) "
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
 
-            string consultaBebida = "INSERT INTO Bebida ( categoriaBebida, litros ) "
-                + "VALUES ( @categoriaBebida, @litros );";
+            string consultaBebida = "INSERT INTO Bebida ( nombreFK, categoriaBebida, litros ) "
+                + "VALUES (@nombreBebida, @categoriaBebida, @litros );";
 
             Dictionary<string, object> valoresParametrosComestible = new Dictionary<string, object> {
                 {"@nombre", bebida.nombre },
                 {"@precio", bebida.precio },
-                {"@fotoTipo", bebida.fotoTipo },
+                {"@fotoTipo", bebida.fotoArchivo.ContentType },
             };
             valoresParametrosComestible.Add("@fotoArchivo", manejadorDeImagen.ConvertirArchivoABytes(bebida.fotoArchivo));
 
             Dictionary<string, object> valoresParametrosBebida = new Dictionary<string, object> {
+                {"nombreBebida", bebida.nombre },
                 {"@categoriaBebida", bebida.categoriaBebida },
                 {"@litros", bebida.litros }
             };
@@ -126,17 +128,18 @@ namespace Examen_Parcial2.Handlers
             string consultaComestible = "INSERT INTO Comestible ( nombrePK, precio, fotoArchivo, fotoTipo ) "
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
 
-            string consultaAcompanante = "INSERT INTO Acompanante ( unidades ) "
-                + "VALUES ( @unidades );";
+            string consultaAcompanante = "INSERT INTO Acompanante ( nombreFK, unidades ) "
+                + "VALUES ( @nombreAcompanante, @unidades );";
 
             Dictionary<string, object> valoresParametrosComestible = new Dictionary<string, object> {
                 {"@nombre", acompanante.nombre },
                 {"@precio", acompanante.precio },
-                {"@fotoTipo", acompanante.fotoTipo },
+                {"@fotoTipo", acompanante.fotoArchivo.ContentType },
             };
             valoresParametrosComestible.Add("@fotoArchivo", manejadorDeImagen.ConvertirArchivoABytes(acompanante.fotoArchivo));
 
             Dictionary<string, object> valoresParametrosAcompanante = new Dictionary<string, object> {
+                {"@nombreAcompanante", acompanante.nombre },
                 {"@unidades", acompanante.unidades },
             };
             return (insertarEnBaseDatos(consultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(consultaAcompanante, valoresParametrosAcompanante));
