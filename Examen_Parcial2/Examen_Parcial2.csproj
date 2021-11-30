@@ -177,10 +177,11 @@
     <Content Include="Views\Comestible\AgregarAcompanante.cshtml" />
     <Content Include="Views\Comestible\AgregarPizza.cshtml" />
     <Content Include="Views\Comestible\listaComestibles.cshtml" />
+    <Content Include="Views\Combo\agregarCombo.cshtml" />
+    <Content Include="Views\Combo\listaCombos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Combo\" />
     <Folder Include="Views\ComestibleModel\" />
   </ItemGroup>
   <ItemGroup>

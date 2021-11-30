@@ -1,0 +1,73 @@
+﻿@model Examen_Parcial2.Models.ComboModel
+@{ 
+    List<SelectListItem> listaPizzas = ViewBag.pizzas;
+    List<SelectListItem> listaBebidas = ViewBag.bebidas;
+    List<SelectListItem> listaAcompanantes = ViewBag.acompanantes;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combos</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    @using (Html.BeginForm("AgregarCombo", "Combo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p class="alert-success">@ViewBag.Message</p>
+        <h4> Formulario de agregar bebidas</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.precio, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.pizza, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownListFor(model => model.pizza, listaPizzas, "- - -", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.pizza, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.bebida, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownListFor(model => model.bebida, listaBebidas, "- - -", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.bebida, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.acompanante, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownListFor(model => model.acompanante, listaAcompanantes, "- - -", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.acompanante, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.fotoArchivo, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.fotoArchivo, new { type = "file", @class = "btn btn alert-info" })
+                    @Html.ValidationMessageFor(model => model.fotoArchivo, "", new { @class = "text-danger" })
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1 col-md-4 col-sm-2">
+                <input type="submit" class="btn btn-success" value="Agregar" />
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Regresar a Inicio", "Index", "Home")
+    </div>
+</body>
+</html>

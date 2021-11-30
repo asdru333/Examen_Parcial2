@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Combos</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Combos</h1>
+
+    <style>
+        .cuadroComestible {
+            margin-bottom: 10px;
+            padding: 1em;
+        }
+
+        img {
+            border-radius: 0.5em;
+            border: 2px solid #133b5c;
+            box-shadow: 0px 0px 0px #ccc;
+            height: 120px;
+            width: 120px;
+            object-fit: cover;
+        }
+    </style>
+
+    <div class="row d-flex flex-wrap align-items-center">
+        @foreach (var combo in ViewBag.combo)
+        {
+            <div class="cuadroComestible row d-flex flex-wrap align-items-center col-md-6">
+                <div class="imagen col-md-4">
+                    <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = combo.nombre })>
+                </div>
+                <div class="textoPizza col-md-8">
+                    <h3>@combo.nombre</h3>
+                    <p>Contiene: @combo.pizza, @combo.bebida, @combo.acompanante</p>
+                    <p>Precio: @combo.precio</p>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

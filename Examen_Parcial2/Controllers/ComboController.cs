@@ -18,7 +18,7 @@ namespace Examen_Parcial2.Controllers
         }
 
         [HttpGet]
-        public ActionResult ObtenerImagen(string nombre)
+        public ActionResult obtenerImagen(string nombre)
         {
             ComboHandler comboHandler = new ComboHandler();
             var tupla = comboHandler.obtenerFoto(nombre);
@@ -26,14 +26,22 @@ namespace Examen_Parcial2.Controllers
         }
 
         [HttpGet]
-        public ActionResult AgregarCombo()
+        public ActionResult agregarCombo()
         {
+            ComboHandler comboHandler = new ComboHandler();
+            ViewBag.pizzas = comboHandler.obtenerNombresPizzas();
+            ViewBag.bebidas = comboHandler.obtenerNombresBebidas();
+            ViewBag.acompanantes = comboHandler.obtenerNombresAcompanantes();
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgregarCombo(ComboModel combo)
+        public ActionResult agregarCombo(ComboModel combo)
         {
+            ComboHandler comboHandler = new ComboHandler();
+            ViewBag.pizzas = comboHandler.obtenerNombresPizzas();
+            ViewBag.bebidas = comboHandler.obtenerNombresBebidas();
+            ViewBag.acompanantes = comboHandler.obtenerNombresAcompanantes();
             ViewBag.ExitoAlCrear = false;
             try
             {
