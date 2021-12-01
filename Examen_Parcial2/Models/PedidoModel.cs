@@ -9,21 +9,20 @@ namespace Examen_Parcial2.Models
 {
     public class PedidoModel
     {
-        [Display(Name = "ID")]
         public int ID { get; set; }
 
-        [Display(Name = "pedido")]
+        [Display(Name = "Su pedido")]
         public string nombreComestible { get; set; }
 
-        [Display(Name = "Su nombre")]
+        [Display(Name = "Escriba su nombre")]
         [Required(ErrorMessage = "Es necesario que ingrese su nombre")]
         public string nombreCliente { get; set; }
 
-        [Display(Name = "Su apellido(s)")]
+        [Display(Name = "Escriba su(s) apellido(s)")]
         [Required(ErrorMessage = "Es necesario que ingrese su apellido")]
          public string apellidoCliente { get; set; }
 
-        [Display(Name = "Dirección")]
+        [Display(Name = "Escriba su dirección")]
         [Required(ErrorMessage = "Es necesario que ingrese su dirección")]
          public string direccion { get; set; }
 

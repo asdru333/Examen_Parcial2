@@ -34,7 +34,7 @@ namespace Examen_Parcial2.Handlers
      
         public bool agregarPedido(PedidoModel pedido)
         {
-            string consulta = "INSERT INTO Comestible ( nombreComestibleFK, nombreCliente, apellidoCliente, direccion, precio ) "
+            string consulta = "INSERT INTO Pedido ( nombreComestibleFK, nombreCliente, apellidoCliente, direccion, precio ) "
                 + "VALUES ( @comestible, @nombreCliente, @apellidoCliente, @direccion, @precio );";
 
             Dictionary<string, object> valoresParametros = new Dictionary<string, object> {

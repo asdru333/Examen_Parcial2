@@ -12,6 +12,22 @@ namespace Examen_Parcial2.Handlers
     {
         ArchivosHandler manejadorDeImagen = new ArchivosHandler();
 
+        public ComestibleModel obtenerComestible(string nombre)
+        {
+            string consulta = "SELECT * FROM Comestible C WHERE nombrePK = '" + nombre + "';";
+            ComestibleModel comestible = null;
+            DataTable tabla = leerBaseDeDatos(consulta);
+            if (tabla.Rows.Count > 0)
+            {
+                comestible = new ComestibleModel
+                {
+                    nombre = Convert.ToString(tabla.Rows[0]["nombrePK"]),
+                    precio = Convert.ToDouble(tabla.Rows[0]["precio"])
+                };
+            }
+            return comestible;
+        }
+
         public List<PizzaModel> obtenerPizzas()
         {
             string consulta = "SELECT * FROM Comestible C JOIN Pizza P ON C.nombrePK = P.nombreFK;";

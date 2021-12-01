@@ -1,0 +1,70 @@
+﻿@model Examen_Parcial2.Models.PedidoModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combos</title>
+    <meta charset="utf-8" />
+
+    <style>
+        img {
+            border-radius: 0.5em;
+            border: 2px solid #133b5c;
+            box-shadow: 0px 0px 0px #ccc;
+            height: 180px;
+            width: 320px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    @using (Html.BeginForm("recoger", "Pedido", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p class="alert-success">@ViewBag.Message</p>
+        <h1 class="text-center">Pedido para recoger</h1>
+        <h3 class="text-center">El producto que quiere comprar es: @ViewBag.nombreComestible</h3>
+        <div class="row">
+            <div class="imagen text-center">
+                <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = @ViewBag.nombreComestible })>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+
+                @Html.LabelFor(model => model.nombreCliente, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.nombreCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.nombreCliente, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.apellidoCliente, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.apellidoCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.apellidoCliente, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.direccion, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3><strong>El total a pagar es: @ViewBag.precio colones</strong></h3>
+                <input type="submit" class="btn btn-success" value="Pedir" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Cancelar", "Index", "Home", new { area = "" }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+        @Html.Hidden("nombreComestible", (object)ViewBag.nombreComestible)
+        @Html.Hidden("precioComestible", (object)ViewBag.precio)
+    }
+</body>
+</html>
