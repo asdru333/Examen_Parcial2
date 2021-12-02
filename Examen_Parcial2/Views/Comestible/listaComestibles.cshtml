@@ -18,63 +18,59 @@
         border: 2px solid #133b5c;
         box-shadow: 0px 0px 0px #ccc;
         height: 120px;
-        width: 120px;
+        width: 150px;
         object-fit: cover;
     }
 </style>
 
 <div class="row d-flex flex-wrap align-items-center">
+    <h2>Pizzas</h2>
     @foreach (var pizza in ViewBag.pizza)
     {
-        <div class="cuadroComestible row d-flex flex-wrap align-items-center col-md-6">
-            <div class="imagen col-md-4">
-                <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = pizza.nombre })>
-            </div>
-            <div class="textoPizza col-md-8">
-                <h3>@pizza.nombre</h3>
-                <p>Salsa: @pizza.salsa</p>
-                <p> Ingredientes: 
-                    @for (int contador = 0; contador < pizza.ingredientes.Count; ++contador)
+        <div class="col-md-3">
+            <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = pizza.nombre })>
+            <h3>@pizza.nombre</h3>
+            <p>Salsa: @pizza.salsa</p>
+            <p>
+                Ingredientes:
+                @for (int contador = 0; contador < pizza.ingredientes.Count; ++contador)
+                {
+                    ViewBag.ingrediente = pizza.ingredientes[contador];
+                    if (contador + 1 != pizza.ingredientes.Count)
                     {
-                        ViewBag.ingrediente = pizza.ingredientes[contador];
-                        if (contador + 1 != pizza.ingredientes.Count)
-                        {
-                            ViewBag.ingrediente += ", ";
-                        }
-                        @ViewBag.ingrediente
+                        ViewBag.ingrediente += ", ";
                     }
-                </p>
-                <p>Precio: @pizza.precio</p>
-            </div>
+                    @ViewBag.ingrediente
+                }
+            </p>
+            <p>Precio: @pizza.precio</p>
         </div>
     }
+</div>
 
+<div class="row d-flex flex-wrap align-items-center">
+    <h2>Bebidas</h2>
     @foreach (var bebida in ViewBag.bebida)
     {
-        <div class="cuadroComestible row d-flex flex-wrap align-items-center col-md-6">
-            <div class="imagen col-md-4">
-                <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = bebida.nombre })>
-            </div>
-            <div class="textoBebida col-md-8">
-                <h3>@bebida.nombre</h3>
-                <p>Tipo: @bebida.categoriaBebida</p>
-                <p>Litros: @bebida.litros</p>
-                <p>Precio: @bebida.precio</p>
-            </div>
+        <div class="col-ms-3 col-md-3">
+            <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = bebida.nombre })>
+            <h3>@bebida.nombre</h3>
+            <p>Tipo: @bebida.categoriaBebida</p>
+            <p>Litros: @bebida.litros</p>
+            <p>Precio: @bebida.precio</p>
         </div>
     }
+</div>
 
+<div class="row d-flex flex-wrap align-items-center">
+    <h2>Acompañantes</h2>
     @foreach (var acompanante in ViewBag.acompanante)
     {
-        <div class="cuadroComestible row d-flex flex-wrap align-items-center col-md-6">
-            <div class="imagen col-md-4">
-                <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = acompanante.nombre })>
-            </div>
-            <div class="textoAcompanante col-md-8">
-                <h3>@acompanante.nombre</h3>
-                <p>Unidades: @acompanante.unidades</p>
-                <p>Precio: @acompanante.precio</p>
-            </div>
+        <div class="col-ms-3 col-md-3">
+            <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = acompanante.nombre })>
+            <h3>@acompanante.nombre</h3>
+            <p>Unidades: @acompanante.unidades</p>
+            <p>Precio: @acompanante.precio</p>
         </div>
     }
 </div>
