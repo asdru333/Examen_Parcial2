@@ -1,0 +1,71 @@
+﻿@model Examen_Parcial2.Models.BebidaModel
+@{
+    ViewBag.Title = "Agregar bebida";
+    List<SelectListItem> Categorias = new List<SelectListItem>() {
+        new SelectListItem { Text = "Gaseoso", Value = "Gaseoso"  },
+        new SelectListItem { Text = "Jugo", Value = "Jugo" },
+        new SelectListItem { Text = "Té tropical", Value = "Té tropical" },
+    };
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bebidas</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    @using (Html.BeginForm("AgregarBebida", "Comestible", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p class="alert-success">@ViewBag.Message</p>
+        <h4> Formulario de agregar bebidas</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.precio, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.litros, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.litros, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.litros, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.categoriaBebida, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownListFor(model => model.categoriaBebida, Categorias, "- - -", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.categoriaBebida, "", new { @class = "text-danger" })
+                </div>
+                <br>
+                @Html.LabelFor(model => model.fotoArchivo, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.TextBoxFor(model => model.fotoArchivo, new { type = "file", @class = "btn btn alert-info" })
+                    @Html.ValidationMessageFor(model => model.fotoArchivo, "", new { @class = "text-danger" })
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-1 col-md-4 col-sm-2">
+                <input type="submit" class="btn btn-success" value="Agregar" />
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Regresar a Inicio", "Index", "Home")
+    </div>
+</body>
+</html>

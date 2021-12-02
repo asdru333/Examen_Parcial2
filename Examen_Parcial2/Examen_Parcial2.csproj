@@ -120,10 +120,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ComestibleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ComestibleHandler.cs" />
+    <Compile Include="Handlers\FilesHandler.cs" />
+    <Compile Include="Handlers\BaseDatosHandler.cs" />
+    <Compile Include="Models\BebidaModel.cs" />
+    <Compile Include="Models\AcompananteModel.cs" />
+    <Compile Include="Models\PizzaModel.cs" />
+    <Compile Include="Models\ComestibleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,10 +170,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Comestible\AgregarBebida.cshtml" />
+    <Content Include="Views\Comestible\AgregarAcompanante.cshtml" />
+    <Content Include="Views\Comestible\AgregarPizza.cshtml" />
+    <Content Include="Views\Comestible\listaComestibles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\ComestibleModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
